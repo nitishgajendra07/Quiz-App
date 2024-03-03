@@ -1,0 +1,19 @@
+[
+    {
+        "id":0,
+        "question":"What is your Name?",
+        "option1":"Nitish",
+        "option2":"Nitish Gajendra",
+        "option3": "Nithish ",
+        "option4": "Nithish Gajendra"
+
+    },
+    {
+        "id":1,
+        "question":"What is your college name",
+        "option1":"VVCE",
+        "option2":"SJCE",
+        "option3": "NIE",
+        "option4": "MIT"
+    }
+]
