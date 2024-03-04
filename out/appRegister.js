@@ -1,13 +1,14 @@
+"use strict";
 function getUserArray() {
     console.log("starting getUserArray");
     function isUser(obj) {
         return ((typeof obj === "object") && ("userName" in obj) && (typeof obj.userName === "string") && ("password" in obj) && (typeof obj.password === "string") && ("scores" in obj));
     }
-    var data = localStorage.getItem("userData");
+    let data = localStorage.getItem("userData");
     console.log(data);
     if (typeof data === "string") {
         console.log("data is of type string");
-        var dataParsed = void 0;
+        let dataParsed;
         try {
             console.log("inside try");
             dataParsed = JSON.parse(data);
@@ -16,37 +17,37 @@ function getUserArray() {
         catch (_a) {
             console.log("inside catch");
             localStorage.removeItem("userData");
-            localStorage.setItem("userData", "[]");
+            localStorage.setItem("userData", `[]`);
             console.log("returning from getUserArray()");
             return [];
         }
         if (Array.isArray(dataParsed)) {
             console.log("dP is an array");
         }
-        if (Array.isArray(dataParsed) && dataParsed.every(function (item) { return isUser(item); })) {
+        if (Array.isArray(dataParsed) && dataParsed.every((item) => { return isUser(item); })) {
             console.log("dataparsed is of type UserArray");
             console.log("returning from getUserArray()");
             return dataParsed;
         }
     }
     localStorage.removeItem("userData");
-    localStorage.setItem("userData", "[]");
+    localStorage.setItem("userData", `[]`);
     console.log("returning from getUserArray()");
     return [];
 }
-var registerButton = document.getElementById("registerButton");
+const registerButton = document.getElementById("registerButton");
 if (registerButton) {
-    registerButton.addEventListener("click", function (e) {
+    registerButton.addEventListener("click", (e) => {
         e.preventDefault();
-        var userNameElement = document.getElementById("registerUsername");
-        var passwordElement = document.getElementById("registerPassword");
-        var confirmPasswordElement = document.getElementById("confirmPassword");
+        const userNameElement = document.getElementById("registerUsername");
+        const passwordElement = document.getElementById("registerPassword");
+        const confirmPasswordElement = document.getElementById("confirmPassword");
         console.log(userNameElement);
         console.log(passwordElement);
         console.log(confirmPasswordElement);
-        var inputUsername;
-        var inputPassword;
-        var confirmPassword;
+        let inputUsername;
+        let inputPassword;
+        let confirmPassword;
         inputUsername = userNameElement.value;
         inputPassword = passwordElement.value;
         confirmPassword = confirmPasswordElement.value;
@@ -56,14 +57,14 @@ if (registerButton) {
         console.log(inputUsername);
         console.log(inputPassword);
         console.log(confirmPassword);
-        var dataParsed = getUserArray();
+        let dataParsed = getUserArray();
         console.log(dataParsed);
         console.log(inputUsername);
         console.log(inputPassword);
         if (inputPassword !== confirmPassword) {
             alert("Please Re-enter the same password");
         }
-        var newUserObj = {
+        let newUserObj = {
             userName: inputUsername,
             password: inputPassword,
             scores: []
